@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/dataset-cleaning/static/css/main.480cd230.css",
-    "main.js": "/dataset-cleaning/static/js/main.4f75ef0c.js",
-    "index.html": "/dataset-cleaning/index.html",
-    "main.480cd230.css.map": "/dataset-cleaning/static/css/main.480cd230.css.map",
-    "main.4f75ef0c.js.map": "/dataset-cleaning/static/js/main.4f75ef0c.js.map"
+    "main.css": "/Dataset-cleaning/static/css/main.480cd230.css",
+    "main.js": "/Dataset-cleaning/static/js/main.4f75ef0c.js",
+    "index.html": "/Dataset-cleaning/index.html",
+    "main.480cd230.css.map": "/Dataset-cleaning/static/css/main.480cd230.css.map",
+    "main.4f75ef0c.js.map": "/Dataset-cleaning/static/js/main.4f75ef0c.js.map"
   },
   "entrypoints": [
     "static/css/main.480cd230.css",
