@@ -1,0 +1,396 @@
+/* Global Styles Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif; /* You can change this to a custom font if you like */
+}
+
+/* Main App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0; /* Reset padding */
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Navbar Styles */
+.navbar {
+  width: 100%;
+  background-color: #007bff;
+  padding: 15px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+/* Navbar Links */
+.navbar-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-item {
+  margin: 0 15px;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-link:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .navbar-list {
+    flex-direction: column;
+  }
+  .navbar-item {
+    margin: 5px 0;
+  }
+}
+
+/* Padding for the app container to avoid content overlap */
+.app-container {
+  padding-top: 80px; /* Add padding to compensate for the fixed navbar */
+}
+
+/* Upload Section */
+.upload-section {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.dropzone {
+  border: 2px dashed #007bff;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.dropzone p {
+  font-size: 1rem;
+  color: #007bff;
+}
+
+.file-info {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Container for View, Visualization, Download */
+.section-container {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+p {
+  color: #555;
+  font-size: 1rem;
+}
+/* Global Styles Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-top: 80px; /* Adjust for fixed navbar */
+}
+
+.navbar {
+  width: 100%;
+  background-color: #007bff;
+  padding: 15px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.navbar-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-item {
+  margin: 0 15px;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-link:hover {
+  background-color: #0056b3;
+}
+
+/* Section Containers */
+.section-container {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+p {
+  color: #555;
+  font-size: 1rem;
+}
+.navbar-link {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-link:hover {
+  text-decoration: underline;
+}
+
+.navbar-link.disabled {
+  color: gray;
+  pointer-events: none; /* Prevent clicking on disabled links */
+}
+
+.upload-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.upload-section input {
+  margin-top: 10px;
+  padding: 10px;
+}
+/* General layout for the app */
+.app-container {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f4f7fc;
+}
+
+/* Navbar styles */
+.navbar {
+  width: 100%;
+  background-color: #2c3e50;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-item {
+  margin: 0 15px;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.navbar-link:hover {
+  color: #1abc9c;
+}
+
+.navbar-link.disabled {
+  color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.upload-section {
+  margin-top: 80px; /* Space below the navbar */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.upload-section h2 {
+  font-size: 18px;
+  color: #333;
+}
+
+.upload-section input[type="file"] {
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.uploaded-file {
+  margin-top: 80px; /* Space below the navbar */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.uploaded-file h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.uploaded-file button {
+  padding: 10px 20px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.uploaded-file button:hover {
+  background-color: #c0392b;
+}
+
+/* Styling for disabled state (like in the navbar) */
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+.dataset-container {
+  padding: 20px;
+  margin: 20px;
+}
+
+.dataset-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataset-table th, .dataset-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-list {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-item {
+  margin-right: 20px;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar-link:hover {
+  color: #4CAF50;
+}
+
+.navbar-link.disabled {
+  color: gray;
+  pointer-events: none;
+}
+
+
+.dataset-table th {
+  background-color: #f4f4f4;
+}
+

@@ -1,0 +1,371 @@
+/* Main container styling */
+.actions-container {
+    padding: 30px;
+    background-color: #fafafa;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    border-radius: 8px;
+    max-width: 1200px;
+    margin: 30px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title styling */
+  .actions-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Recommendation section */
+  .recommendation-container {
+    background-color: #f0f8ff;
+    border-left: 5px solid #3498db;
+    padding: 20px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #2c3e50;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Input form container */
+  .input-container {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input-container h3 {
+    font-size: 22px;
+    color: #3498db;
+    margin-bottom: 15px;
+  }
+  
+  .input-container label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #34495e;
+  }
+  
+  .input-container input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .input-container .input-section {
+    margin-bottom: 20px;
+  }
+  
+  /* Button */
+  .action-button {
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .action-button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Feedback section */
+  .feedback-container {
+    background-color: #eaf2f8;
+    padding: 20px;
+    border-radius: 8px;
+    color: #333;
+    margin-top: 30px;
+  }
+  
+  .feedback-container h4 {
+    font-size: 20px;
+    color: #2980b9;
+  }
+  
+  .feedback-container p {
+    font-size: 16px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .actions-container {
+      padding: 20px;
+    }
+  
+    .actions-title {
+      font-size: 22px;
+    }
+  
+    .input-container h3 {
+      font-size: 20px;
+    }
+  
+    .action-button {
+      padding: 12px 25px;
+      font-size: 14px;
+    }
+  }
+  /* Container styles */
+.dataset-cleaning-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 20px auto;
+  }
+  
+  /* Heading Styles */
+  h1 {
+    font-size: 2em;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Instructions and Clarifications */
+  .recommendation-container {
+    margin-bottom: 30px;
+  }
+  
+  .recommendation-container p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .recommendation-container strong {
+    color: #333;
+  }
+  
+  /* Radio Button and Input Styles */
+  .input-container {
+    margin-bottom: 30px;
+  }
+  
+  .input-section {
+    margin-bottom: 15px;
+  }
+  
+  .input-section label {
+    font-size: 1em;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+    width: 100%;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+  }
+  
+  .help-text {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+  }
+  
+  /* Button Styles */
+  .action-buttons {
+    text-align: center;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Preview Styles */
+  .preview-container {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .preview-container pre {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #333;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Custom Value Input */
+  .custom-value-input {
+    margin-top: 15px;
+  }
+  
+  .custom-value-input label {
+    font-size: 1em;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Responsive Styling */
+  @media screen and (max-width: 768px) {
+    .dataset-cleaning-container {
+      padding: 15px;
+      max-width: 100%;
+    }
+  
+    h1 {
+      font-size: 1.8em;
+    }
+  
+    h3 {
+      font-size: 1.1em;
+    }
+  
+    .input-container {
+      margin-bottom: 20px;
+    }
+  
+    .input-section {
+      margin-bottom: 10px;
+    }
+  
+    button {
+      width: 100%;
+    }
+  }
+  /* Dropdown Styling */
+select {
+    padding: 8px;
+    font-size: 1em;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    background-color: #fff;
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+    width: 100%;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+  }
+  
+  .input-section select,
+  .input-section input {
+    display: block;
+    margin-bottom: 15px;
+  }
+  
+  /* Custom Value Input */
+  .custom-value-input {
+    margin-top: 15px;
+  }
+  
+  .custom-value-input label {
+    font-size: 1em;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Button and Preview Styles (Unchanged) */
+  .action-buttons {
+    text-align: center;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Preview Section (Unchanged) */
+  .preview-container {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .preview-container pre {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #333;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  /* Checkbox Styling */
+.input-section input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .input-section label {
+    font-size: 1em;
+    color: #555;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .help-text {
+    font-size: 0.9em;
+    color: #888;
+  }
+  

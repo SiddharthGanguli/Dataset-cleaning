@@ -1,0 +1,226 @@
+import React, { useState, useEffect } from 'react';
+import './ActionsOnDataset.css'; // Import the CSS file
+
+const ActionsOnDataset = ({ dataset, onCleanDataset }) => {
+  const [fillMethod, setFillMethod] = useState('mean');
+  const [customValue, setCustomValue] = useState('');
+  const [removeEmptyRows, setRemoveEmptyRows] = useState(false);
+  const [selectedColumns, setSelectedColumns] = useState([]); // Array to store selected columns
+  const [previewDataset, setPreviewDataset] = useState([]);
+  const [columnsWithMissingValues, setColumnsWithMissingValues] = useState({ numeric: [], categorical: [] });
+  const [userAddedColumn, setUserAddedColumn] = useState(''); // Track user input for adding columns
+
+  // Get the columns with missing values and their types
+  useEffect(() => {
+    const missingColumns = getColumnsWithMissingValues(dataset);
+    setColumnsWithMissingValues(missingColumns);
+  }, [dataset]);
+
+  const getColumnsWithMissingValues = (dataset) => {
+    const columnsWithMissing = {
+      numeric: [],
+      categorical: [],
+    };
+
+    if (dataset.length === 0) return columnsWithMissing;
+
+    const columns = Object.keys(dataset[0]);
+
+    columns.forEach((column) => {
+      const hasMissing = dataset.some((row) => row[column] === null || row[column] === '');
+      if (hasMissing) {
+        const isNumeric = dataset.every((row) => !isNaN(row[column]));
+        if (isNumeric) {
+          columnsWithMissing.numeric.push(column);
+        } else {
+          columnsWithMissing.categorical.push(column);
+        }
+      }
+    });
+
+    return columnsWithMissing;
+  };
+
+  const calculateMedian = (dataset, column) => {
+    const values = dataset.map((row) => parseFloat(row[column])).filter((value) => !isNaN(value));
+    values.sort((a, b) => a - b);
+    const middle = Math.floor(values.length / 2);
+    return values.length % 2 === 0 ? (values[middle - 1] + values[middle]) / 2 : values[middle];
+  };
+
+  const forwardFill = (dataset, column) => {
+    let lastValidValue = null;
+    const newDataset = [...dataset]; // Clone the dataset to avoid mutation
+
+    for (let i = 0; i < newDataset.length; i++) {
+      const row = newDataset[i];
+      if (row[column] !== null && row[column] !== '') {
+        lastValidValue = row[column];
+      } else if (lastValidValue !== null) {
+        newDataset[i][column] = lastValidValue;
+      }
+    }
+    return newDataset;
+  };
+
+  const backwardFill = (dataset, column) => {
+    let lastValidValue = null;
+    const newDataset = [...dataset]; // Clone the dataset to avoid mutation
+
+    for (let i = newDataset.length - 1; i >= 0; i--) {
+      const row = newDataset[i];
+      if (row[column] !== null && row[column] !== '') {
+        lastValidValue = row[column];
+      } else if (lastValidValue !== null) {
+        newDataset[i][column] = lastValidValue;
+      }
+    }
+    return newDataset;
+  };
+
+  const fillMissingValues = (dataset, method, columns) => {
+    let cleanedDataset = [...dataset]; // Clone the dataset to avoid mutation
+
+    columns.forEach((column) => {
+      if (method === 'mean') {
+        cleanedDataset = cleanedDataset.map((row) => {
+          const filledRow = { ...row };
+          if (row[column] === null || row[column] === '') {
+            const columnValues = dataset.map((item) => item[column]).filter((value) => value !== null && value !== '');
+            const meanValue = columnValues.reduce((acc, value) => acc + value, 0) / columnValues.length;
+            filledRow[column] = meanValue;
+          }
+          return filledRow;
+        });
+      } else if (method === 'median') {
+        cleanedDataset = cleanedDataset.map((row) => {
+          const filledRow = { ...row };
+          if (row[column] === null || row[column] === '') {
+            const medianValue = calculateMedian(dataset, column);
+            filledRow[column] = medianValue;
+          }
+          return filledRow;
+        });
+      } else if (method === 'forwardFill') {
+        cleanedDataset = forwardFill(cleanedDataset, column);
+      } else if (method === 'backwardFill') {
+        cleanedDataset = backwardFill(cleanedDataset, column);
+      }
+    });
+
+    return cleanedDataset;
+  };
+
+  const handleApplyFillMethod = () => {
+    let cleaned = [...dataset];
+
+    if (selectedColumns.length > 0) {
+      cleaned = fillMissingValues(cleaned, fillMethod, selectedColumns);
+    }
+
+    if (removeEmptyRows) {
+      cleaned = removeRowsWithEmptyValues(cleaned);
+    }
+
+    setPreviewDataset(cleaned);
+    onCleanDataset(cleaned);
+  };
+
+  const removeRowsWithEmptyValues = (dataset) => {
+    return dataset.filter((row) => {
+      return Object.values(row).every((value) => value !== null && value !== '');
+    });
+  };
+
+  const handleAddColumn = () => {
+    if (
+      userAddedColumn &&
+      !columnsWithMissingValues.categorical.includes(userAddedColumn) &&
+      !columnsWithMissingValues.numeric.includes(userAddedColumn)
+    ) {
+      setColumnsWithMissingValues((prev) => ({
+        ...prev,
+        categorical: [...prev.categorical, userAddedColumn],
+      }));
+    }
+  };
+
+  const columns = dataset.length ? Object.keys(dataset[0]) : [];
+
+  return (
+    <div className="dataset-cleaning-container">
+      <h1>Actions on Dataset</h1>
+      <div className="recommendation-container">
+        <h3>How to handle missing values:</h3>
+        <p><strong>Numeric Data:</strong> Use mean, median, or custom values to fill missing values.</p>
+        <p><strong>Categorical Data:</strong> Use mode or a custom value to fill missing values.</p>
+        <p><strong>Advanced Options:</strong> Use forward fill or backward fill.</p>
+      </div>
+      <div className="input-container">
+        <h3>Select how to handle missing values:</h3>
+        <label>
+          Fill Method:
+          <select value={fillMethod} onChange={(e) => setFillMethod(e.target.value)}>
+            <option value="mean">Fill with Mean</option>
+            <option value="median">Fill with Median</option>
+            <option value="forwardFill">Forward Fill</option>
+            <option value="backwardFill">Backward Fill</option>
+          </select>
+        </label>
+        <label>
+          Select Columns for Fill:
+          <select
+            multiple
+            value={selectedColumns}
+            onChange={(e) => {
+              const selectedOptions = Array.from(e.target.selectedOptions).map((option) => option.value);
+              setSelectedColumns(selectedOptions);
+            }}
+          >
+            {columnsWithMissingValues.numeric.map((column) => (
+              <option key={column} value={column}>{column}</option>
+            ))}
+            {columnsWithMissingValues.categorical.map((column) => (
+              <option key={column} value={column}>{column}</option>
+            ))}
+          </select>
+        </label>
+        <p>Hold Ctrl (Windows) or Cmd (Mac) to select multiple columns.</p>
+        <label>
+          <input
+            type="checkbox"
+            checked={removeEmptyRows}
+            onChange={(e) => setRemoveEmptyRows(e.target.checked)}
+          />
+          Remove empty rows
+        </label>
+        <button onClick={handleApplyFillMethod}>Apply</button>
+      </div>
+      {previewDataset.length > 0 && (
+        <div className="dataset-preview">
+          <h3>Preview of Cleaned Dataset:</h3>
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(previewDataset[0]).map((col) => (
+                  <th key={col}>{col}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {previewDataset.map((row, idx) => (
+                <tr key={idx}>
+                  {Object.values(row).map((val, i) => (
+                    <td key={i}>{val}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ActionsOnDataset;
